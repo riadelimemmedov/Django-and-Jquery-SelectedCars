@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .not-visible{
+        display: none;
+    }
+</style>
+<!-- !Alert hissesi -->
+<div id="alert-box"><!-- Bura js den elave edeciyik xeta mesajini -->
+
+</div>
+
+<form class="mt-5" id="car-form">
+    <!-- cunki form ile datani gonderib save edeciyik modele -->
+    {% csrf_token %}
+
+    <!-- ! Car -->
+    <div class="ui selection dropdown" id="cars"><!-- acilib baglanani tutan data budur -->
+        <input type="hidden" name="cars">
+        <i class="dropdown icon"></i>
+        <div class="default text" id="carText">Choose a Car</div>
+        <div class="menu" id="cars-data-box" style="margin-top: 10px;">
+            <!-- {% for item in qs %}
+                <div class="item" data-value="{{item}}">{{item.name}}</div>
+            {% endfor %} -->
+        </div>
+    </div>
+    
+    <!-- !Models -->
+    <div class="ui selection dropdown" id="models"><!-- acilib baglanani tutan data budur -->
+        <input type="hidden" name="model">
+        <i class="dropdown icon"></i>
+        <div class="default text" id="modelText">Choose a Model</div><!--data secenden sonra bura gelir text ona gore submit edende burani gotur textdini gondermeye diqqtli ol burda-->
+        <div class="menu" id="models-data-box" style="margin-top: 10px;">
+
+        </div>
+    </div>
+    <!--*Eger form icinden data gonderirsense ve ya alirsansa buton yazanda type olarag mutleq submit yazin -->
+    
+    <div id="btn-box" class="mt-5 not-visible">
+        <button type="submit" class="ui primary button">Save</button>
+    </div>
+
+</form>
+<script>
+    $('.ui.dropdown').dropdown({
+        forceSelection: false
+    });
+</script>
+{% endblock content %}
